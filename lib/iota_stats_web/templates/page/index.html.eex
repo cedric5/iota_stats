@@ -1,0 +1,51 @@
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script>
+function get_value (){
+    val = $.ajax({type: "GET", url: "/iota_value", async: false}).responseText
+    if(val == null){
+      val = "Error"
+    }
+    document.getElementById('current_value').innerHTML = val + "$";
+}
+</script>
+<div class="container">
+<div class="head_text" style="text-align:center;"><h2>Hoeveel hebben we al gestackt?</h2></div>
+<div class="row">
+   <div class="col-md-12" style="text-align: center;">
+      <div class="panel panel-default">
+         <h3 id="current_value">Iota koers: <%=current_value()%>$</h3>
+      </div>
+   </div>
+</div>
+<div class="row">
+   <div class="col-md-6" style="text-align: center;">
+      <div class="panel panel-default">
+         <div class="panel-body"
+         <h2>Cedric</h2>
+         <h4>Totale waarden: <%=cedric_holding()%>$</h4>
+         <h4>Winst: <%=cedric_profit()%>$</h4>
+      </div>
+   </div>
+</div>
+<div class="col-md-6" style="text-align: center">
+   <div class="panel panel-default">
+      <div class="panel-body"
+      <h2>Mark</h2>
+      <h4>Totale waarden: <%=mark_holding()%>$</h4>
+      <h4>Winst: <%=mark_profit()%>$</h4>
+   </div>
+</div>
+</div>
+   <div class="col-md-12" style="text-align: center;">
+      <div class="panel panel-default">
+         <h3 id="total_profit">Totale winst: <%=total_profit()%>$</h3>
+      </div>
+   </div>
+</div>
+</div>
+</div>
+</div>
+
+<script>
+setInterval(function() {get_value();}, 120000);
+</script>
